@@ -69,7 +69,7 @@ Implementieren Sie die Methode $steps(x,y,d)$, welche die gesuchte Anzahl der Sc
 </li>
 </ol>
 <h2>
-Antwort 1.1
+Antworten 1.1
 </h2>
 <ol>
 <li>
@@ -185,11 +185,17 @@ Implementieren Sie f ib4 als iterative Version von f ib3.
 Alle Versionen f ib1, ... f ib4 müssen durch Tests abgedeckt sein.
 
 <h2>
-Antwort 1.2
+Antworten 1.2
 </h2>
 <ol>
 <li>
-TODO
+Siehe Implementation
+</li>
+<li>
+Der Zeitaufwand von fib beträgt O(n).
+</li>
+<li>
+Siehe Implementation
 </li>
 <li>
 TODO
@@ -209,16 +215,35 @@ Testergebnisse
   var ad_1_2_data = [];
 
   // Code  
-  // fib naiv
-  function fib(n){
-	if(n<=0){
-		return 0;
-	}else if(n == 1){
-		return 1;
-	}else{
-		return fib(n-1) + fib(n-2);
-	}
+    MyClass = function() {
+    this.value = Math.ceil(Math.random()*100);
   }
+  
+  // fib naiv
+	function fib(n){
+		if(n<=0){
+			return 0;
+		}else if(n == 1){
+			return 1;
+		}else{
+			return fib(n-1) + fib(n-2);
+		}
+	}
+    
+  //fib2
+  function fib2(n){
+	var fibo1 = 0;
+	var fibo2 = 1;
+	
+	while (n > 0){
+	 var temp = fibo1 + fibo2;
+	 fibo1 = fibo2;
+	 fibo2 = temp;	
+	 n = n-1;
+	}
+	return fibo1;
+  }
+  
 
   // Experiments
   for(i = 0; i < 10; i ++) {
@@ -231,7 +256,8 @@ Testergebnisse
   // Tests
   assert(ad_1_2_data.length === 10, "experiments have collected data");
   assert(typeof(steps) === 'function', "function 'steps' not implemented");
-  assert(fib(7)== 13, "fib naiv")
+  assert(fib(7) == 13, "fib naiv")
+  assert(fib2(7) == 13, "fib2")
 </script>
 <!-- dieser Code zeigt die Implementierung und die Tests an -->
 <script>
@@ -362,13 +388,15 @@ Testergebnisse
 <div id="ad-1-3-results"></div>
 <!-- Code und Tests hier hin -->
 <script id="ad-1-3-code">
-  var ad_1_2_data = [];
+  var ad_1_3_data = [];
 
   // Code  
-
+  MyClass = function() {
+    this.value = Math.ceil(Math.random()*100);
+  }
   // Experiments
   for(i = 0; i < 10; i ++) {
-    ad_1_2_data.push({
+    ad_1_3_data.push({
       experiment : i,
       value : new MyClass().value
       });
