@@ -93,27 +93,23 @@ Testergebnisse
 <script id="ad-1-1-code">
   var ad_1_1_data = [];
 
-  // Code
-  MyClass = function() {
-    this.value = Math.ceil(Math.random()*100);
-  }
+  // Code Aufgabe 1.2 Funktion steps
+  Steps = function steps(x,y,d){
+  return Math.ceil(Math.abs(y-x)/d);}
 
   // Experiments
   for(i = 0; i < 100; i ++) {
     ad_1_1_data.push({
       experiment : i,
-      value : new MyClass().value
+      value : new Steps(15 + i,80 + i * 0.5, 30).value
       });
   }
 	
-//Aufgabe 1.2 Funktion steps
-  function steps(x,y,d){
-  return Math.ceil(Math.abs(y-x)/d);
-  }
+
 
   // Tests
   assert(ad_1_1_data.length === 100, "experiments have collected data");
-  assert(typeof(steps) === 'function', "function 'steps' not implemented");
+  assert(typeof(Steps) === 'function', "function 'steps' not implemented");
   assert(steps(15,80,30)== 3, "Drei Schritte bei den Werten 15,80,30")
 </script>
 <!-- dieser Code zeigt die Implementierung und die Tests an -->
@@ -216,7 +212,7 @@ Testergebnisse
 
   // Code  
     MyClass = function() {
-    this.value = Math.ceil(Math.random()*100);
+   // this.value = Math.ceil(Math.random()*100);
   }
   
   // fib naiv
@@ -229,8 +225,20 @@ Testergebnisse
 			return fib(n-1) + fib(n-2);
 		}
 	}
+	
+	//fib2
+	function fib2(n){
+		fibo2_(0,1,n);
+		}
+	
+	function fibo2_(fib1, fib2, n){
+			if(n<= 0){return fib1}
+			else{
+				fibo2_(fib1 + fib2, fib2, n - 1)
+			}
+		}
     
-  //fib2
+  //fib4
   function fib2(n){
 	var fibo1 = 0;
 	var fibo2 = 1;
@@ -244,12 +252,16 @@ Testergebnisse
 	return fibo1;
   }
   
+  
+  
+  
 
   // Experiments
   for(i = 0; i < 10; i ++) {
     ad_1_2_data.push({
       experiment : i,
       value : new MyClass().value
+	  value : new fib(5).value
       });
   }
 
@@ -400,6 +412,13 @@ Testergebnisse
       experiment : i,
       value : new MyClass().value
       });
+  }
+  
+  //Liste
+  function List(){
+  
+  
+  
   }
 
   // Tests
